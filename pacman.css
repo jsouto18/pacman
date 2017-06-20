@@ -31,6 +31,7 @@ body {
 	right: 0;
 	bottom: 0;
 	display: none;
+	z-index: 4000;
 	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: center;
@@ -85,6 +86,22 @@ body {
 	z-index: 210;
 }
 #ghost2{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./ghost.png');
+	background-size: contain;
+	z-index: 210;
+}
+#ghost3{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./ghostGreen.png');
+	background-size: contain;
+	z-index: 210;
+}
+#ghost4{
 	width: 24px;
 	height: 24px;
 	position: absolute;

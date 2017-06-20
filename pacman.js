@@ -2,21 +2,23 @@ var start = document.getElementById('start')
 var pacman = document.getElementById('pacman')
 var ghost1 = document.getElementById('ghost1')
 var ghost2 = document.getElementById('ghost2')
+var ghost3 = document.getElementById('ghost3')
+var ghost4 = document.getElementById('ghost4')
 var gameContainer = document.getElementById('game-container')
 
 var velocityY = 0
 var velocityX = 0
 var positionY = 24
 var positionX = 24
-var ghostVelocityY = [0,0] 
-var ghostVelocityX = [0,0]
-var ghostPositionY = [24,24]
-var ghostPositionX = [24,24]
+var ghostVelocityY = [-1,-1,-1,-1] 
+var ghostVelocityX = [0,0,0,0]
+var ghostPositionY = [312,288,312,288]
+var ghostPositionX = [336,312,312,336]
 var cntfood = 0
 var cntWall = 0
 var collision = false
 var Ghostcollision = false
-var ghostSurround= [[false,false,false,false],[false,false,false,false]]
+var ghostSurround= [[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]
 var renderGhostMovement = true
 var renderGhost = 100
 var clientTop= 0
@@ -25,10 +27,14 @@ var clientLeft= 0
 var level = "1111111111111111111111111111210000000000001100000000000012101111011111011011110111110121011110111110110111101111101210000000000000000000000000012101111011011111111011011110121011110110111111110110111101210000001100001100001100000012111111011111011011111011111121111110111110110111110111111200000001100000000001100000002111111011011111111011011111121111110000100000010000111111211111101101000000101101111112111111011011100111011011111120000000110000000000110000000211111101111101101111101111112111111011111011011111011111121000000110000110000110000001210111101101111111101101111012101111011011111111011011110121000000000000000000000000001210111101111101101111011111012101111011111011011110111110121000000000000110000000000001211111111111111111111111111112"
 
 window.addEventListener('load', function(){
-	ghost1.style.top = '24px'
-	ghost1.style.left = '24px'
-	ghost2.style.top = '24px'
-	ghost2.style.left = '24px'
+	ghost1.style.top = '312px'
+	ghost1.style.left = '336px'
+	ghost2.style.top = '288px'
+	ghost2.style.left = '312px'
+	ghost3.style.top = '312px'
+	ghost3.style.left = '312px'
+	ghost4.style.top = '288px'
+	ghost4.style.left = '336px'
 	renderWalls()	
 })
 
@@ -83,7 +89,11 @@ function move() {
 
 		pacman.style.top = positionY+'px'
 		pacman.style.left = positionX+'px'
-
+		for(var h=1; h<5; h++){
+		var ghost = 'ghost'+(h)
+		if (document.getElementById(ghost).style.top == pacman.style.top && document.getElementById(ghost).style.left ==positionX+'px')
+			document.getElementById('game-over').style.display = 'flex'
+		}
 		colisionCheck()
 
 		move()
@@ -120,7 +130,7 @@ function ghostPosition(){
 	var wallId
 	var wallDiv
 	var comp
-	for (var h = 0; h < 2; h++) {
+	for (var h = 0; h < 4; h++) {
 	var pos=[[ghostPositionY[h],ghostPositionX[h]-24],[ghostPositionY[h]-24,ghostPositionX[h]],[ghostPositionY[h],ghostPositionX[h]+24],[ghostPositionY[h]+24,ghostPositionX[h]]]
 	for(var j=0;j<4;j++){
 		for(var i = 1; i < cntWall+1; i++){
@@ -140,7 +150,7 @@ function ghostPosition(){
 function ghostMovement() {
 	setTimeout(function(){
 	ghostPosition()
-	for (var h = 0; h < 2; h++) {
+	for (var h = 0; h < 4; h++) {
 	var random = Math.floor(Math.random()*3.9999)
 	switch (random) {
 		case 0:
@@ -202,7 +212,7 @@ function ghostMovement() {
 		document.getElementById(ghost).style.top = ghostPositionY[h]+'px'
 		document.getElementById(ghost).style.left = ghostPositionX[h] +'px'
 	}
-	ghostSurround = [[false,false,false,false],[false,false,false,false]]
+	ghostSurround = [[false,false,false,false],[false,false,false,false],[false,false,false,false],[false,false,false,false]]
 	ghostMovement()
 },renderGhost)
 }
@@ -236,11 +246,11 @@ function renderWalls() {
 				wallLeft += 24
 				break;
 			case '2':
-			wallTop += 24
-	gameContainer.style.width = wallLeft+'px'
-			wallLeft = 0
-			break;
-		}
+				wallTop += 24
+				gameContainer.style.width = wallLeft+'px'
+				wallLeft = 0
+				break;
+		}	
 	}
 	gameContainer.style.height = wallTop+'px'
 }
@@ -250,3 +260,9 @@ start.addEventListener("click", function(){
 	move()
 	ghostMovement()
 })
+
+
+document.getElementById('restart').addEventListener("click", function(){
+	location.reload()
+})
+
