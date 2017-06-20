@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Press Start 2P', cursive;
+	text-align: center;
+}
+#score-container {
+	height: 5vh;
+	width: 95%;
+	margin: auto;
+}
+#points {
+	float: right;
+	padding-top: 13px;
+}
+#game-container {
+	border: 2px solid #333;
+	background-color: #333;
+	height: 95vh;
+	width: 95%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+#game-over {
+	border: 2px solid #333;
+	background-color: #000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	color: #00ff00;
+}
+#game-over .text {
+	margin-bottom: 20px;
+}
+#game-over #restart {
+	padding: 15px 25px;
+	border: 2px solid #00ff00;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#game-over #restart img {
+	height: 19px;
+}
+#pacman {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./pacman.png');
+	background-size: contain;
+}
+
+#start {
+	z-index: 100;
+	padding: 15px 25px;
+	line-height: 28px;
+	text-transform: uppercase;
+	background: #333;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	cursor: pointer;
+}
+
+#ghost1{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./ghostGreen.png');
+	background-size: contain;
+	z-index: 210;
+}
+#ghost2{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./ghost.png');
+	background-size: contain;
+	z-index: 210;
+}
+.food{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./food.png');
+	background-size: 8px 8px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.wall {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-image: url('./wall.png');
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
