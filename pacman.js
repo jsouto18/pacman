@@ -293,7 +293,6 @@ function ghostrandom(h){
 			}
 		break;
 	}
-	console.log(random)
 }
 
 function ghostFollow(h,GPt_ABS,GPl_ABS,GPt,GPl){
